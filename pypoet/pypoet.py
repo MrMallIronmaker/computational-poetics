@@ -36,7 +36,7 @@ def full_score(query):
     vowels = []
     for word in extract_words(query):
         try:
-            vowel_words = [phoneme for phoneme in arpabet[word][0] if phoneme[0] in 'AEIOU']
+            vowel_words = [phoneme for phoneme in arpabet[word][0] if phoneme[0] not in 'AEIOU']
             vowels.append(vowel_words)
         except KeyError:
             pass
@@ -44,7 +44,7 @@ def full_score(query):
 
     # ok, try a boatload of scales
     score = []
-    for scaling in [2, 3, 5, 8, 13, 21, 34, 55, 89, 144]:
+    for scaling in fibonacci_scaling_upto(len(vowels)):
         score_accumulator = []
         for grouping in grouper(vowels, scaling):
             score_accumulator.append(clusterability(grouping))
