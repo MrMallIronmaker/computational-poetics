@@ -32,11 +32,14 @@ def clusterability(vowels):
     vowel_counts = Counter(vowels)
     return sum([(vowel_counts[key] / vowel_total)**2 for key in vowel_counts])
 
-def full_score(query):
+def full_score(query, vowels=True, consonants=True):
     vowels = []
     for word in extract_words(query):
         try:
-            vowel_words = [phoneme for phoneme in arpabet[word][0] if phoneme[0] not in 'AEIOU']
+            vowel_words = [
+                phoneme for phoneme in arpabet[word][0] 
+                if (vowels and phoneme[0] in 'AEIOU') 
+                    or (consonants and phoneme[0] not in 'AEIOU')]
             vowels.append(vowel_words)
         except KeyError:
             pass
