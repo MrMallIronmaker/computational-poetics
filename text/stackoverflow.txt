@@ -1,0 +1,20 @@
+The best package I've seen for this is Gensim,
+found at the Gensim Homepage. I've used it many times, and 
+overall been very happy with it's ease of use; it is written
+in Python, and has an easy to follow tutorial to get you 
+started, which compares 9 strings. It can be installed via 
+pip, so you won't have a lot of hassle getting it installed
+I hope.
+
+Which scoring algorithm you use depends heavily on the context 
+of your problem, but I'd suggest starting of with the LSI 
+functionality if you want something basic. (That's what the tutorial
+walks you through.)
+
+If you go through the tutorial for gensim, it will walk you through
+comparing two strings, using the Similarities function. This will
+allow you to see how your stings compare to each other, or to some
+other sting, on the basis of the text they contain.
+
+If you're interested in the science behind how it works, check out
+this paper.
