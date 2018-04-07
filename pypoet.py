@@ -136,19 +136,3 @@ def full_score(query):
             score_accumulator.append(clusterability(grouping))
         score.append(sum(score_accumulator) / float(len(score_accumulator)))
     return np.array(score)
-
-if __name__ == "__main__":
-    hamilton_score_0 = full_score(hamiltons[0])
-    hamilton_score_1 = full_score(hamiltons[1])
-    stackoverflow_score = full_score(stackoverflow)
-    nyt_score = full_score(nyt)
-    average_score = (hamilton_score_0 + hamilton_score_1 + stackoverflow_score + nyt_score) / 4.0
-
-    plt.plot(hamilton_score_0 - average_score, color='r')
-    plt.plot(hamilton_score_1 - average_score, color='g')
-    plt.plot(stackoverflow_score - average_score, color='b')
-    plt.plot(nyt_score - average_score, color='k')
-    plt.show()
-
-
-
